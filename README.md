@@ -25,4 +25,4 @@ Share this release:
 
  download the sample 
  
-![alt text](https://github.com/iamrajendra/gambler_master/blob/master/device-2019-03-10-194947.png)
+![alt text](https://github.com/iamrajendra/gambler_master/blob/master/device-2019-03-10-211614.png)
