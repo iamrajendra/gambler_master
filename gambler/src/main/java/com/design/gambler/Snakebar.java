@@ -6,6 +6,7 @@ import android.support.design.widget.Snackbar;
 import android.support.v4.content.ContextCompat;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -16,10 +17,12 @@ public class Snakebar {
     private final TextView msgTV;
     private final Snackbar snackbar;
     private Activity mActivity;
+    private Button mButtonAction;
 
     public Snakebar(Activity activity) {
         mActivity = activity;
         snackbar = Snackbar.make(activity.findViewById(android.R.id.content), "", Snackbar.LENGTH_LONG);
+
 // Get the Snackbar's layout view
         Snackbar.SnackbarLayout layout = (Snackbar.SnackbarLayout) snackbar.getView();
 // Hide the text
@@ -27,12 +30,14 @@ public class Snakebar {
         textView.setVisibility(View.INVISIBLE);
 
 // Inflate our custom view
-        snackView = LayoutInflater.from(activity).inflate(R.layout.message, null);
+        snackView = LayoutInflater.from(activity).inflate(R.layout.snakebar, null);
 // Configure the view
         imageView = (ImageView) snackView.findViewById(R.id.indicator_iv);
 
         msgTV = (TextView) snackView.findViewById(R.id.msg);
         msgTV.setTextColor(Color.WHITE);
+        mButtonAction  = snackView.findViewById(R.id.action_b);
+
 
 //If the view is not covering the whole snackbar layout, add this line
         layout.setPadding(0, 0, 0, 0);
@@ -74,6 +79,7 @@ public class Snakebar {
         return this;
     }
 
+
     public Snakebar information(String msg) {
         snackView.setBackgroundColor(ContextCompat.getColor(mActivity, R.color.md_blue_800));
 
@@ -83,13 +89,26 @@ public class Snakebar {
         return this;
     }
 
-    /*public Snakebar action(String action, View.OnClickListener onClickListener) {
-        snackbar.setAction(action, onClickListener);
+    public Snakebar action(String title, View.OnClickListener onClickListener, View.OnClickListener cancel ) {
+      mButtonAction.setVisibility(View.VISIBLE);
+      snackView.setOnClickListener( cancel);
+      mButtonAction.setOnClickListener(onClickListener);
+      mButtonAction.setText(title);
+
         return this;
-    }*/
+    }
 
     public Snakebar show() {
         snackbar.show();
         return this;
+    }
+    public Snakebar hide() {
+        snackbar.dismiss();
+        return this;
+    }
+
+    public Snakebar infinite(){
+        snackbar.setDuration(Snackbar.LENGTH_INDEFINITE);
+    return this;
     }
 }
