@@ -27,3 +27,5 @@ Link
 That's it! The first time you request a project JitPack checks out the code, builds it and serves the build artifacts (jar, aar).
 
 If the project doesn't have any GitHub Releases you can use the short commit hash or 'master-SNAPSHOT' as the version.
+
+![alt text](https://github.com/iamrajendra/gambler_master/blob/master/device-2019-03-10-194947.png)
